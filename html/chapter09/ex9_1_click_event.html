@@ -18,12 +18,11 @@
             //객체찾기
             const img = document.querySelector('[src="./media/chicken.png"]');
             //이벤트리스너등록 및 핸들러기능구현
-            img.addEventListener("click", ()=>{
+            img.addEventListener("click", (event)=>{
+                console.log('event:',event);
                deg = deg + 90; 
                img.style.transform = `rotate(${deg}deg)`;
             }); 
-            
-
         }
     </script>
 </head>
