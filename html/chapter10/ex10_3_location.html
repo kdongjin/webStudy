@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>현재페이지는 location 객체를 테스팅하는 화면입니다.</h1>
+    <form action="#" method="get">
+        <input type="number" name="site" id="site" max="2" min="0">
+    </form>
+    <button type="button">요청하기</button>
+    <button type="button" id="cancel">취소하기</button>
+
+    <script>
+        //변수선언
+        let win = null;  
+        const siteArray = new Array();
+        siteArray[0] = "https://www.naver.com";
+        siteArray[1] = "https://www.nate.com";
+        siteArray[2] = "https://www.daum.com";
+        //객체찾기
+        const number = document.querySelector('[type="number"]');
+        const btn = document.querySelector('[type="button"]');
+        const btncancel = document.querySelector('#cancel');
+        //이벤트리스너 등록및 핸들러처리
+        btn.addEventListener("click",()=>{
+            const no = window.parseInt(number.value); 
+            if(no<0 || no >=3){
+                alert("0~3번까지만 입력해주세요");
+                return; 
+            }
+            win = window.open(siteArray[no],"_blank","width=400, height=400, left=100, top=100");
+        });  
+        btncancel.addEventListener("click",()=>{
+            win.close; 
+        });  
+    </script>
+    
+</body>
+</html>
