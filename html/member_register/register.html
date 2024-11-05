@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding-top: 20px;
+            height: 100vh;
+        }
+        form {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid rgb(213, 211, 211);
+        }
+        form label {
+            display: inline-block;
+            width: 100px;
+        }
+        form button {
+            width: 100%;
+            padding: 8px;
+            display: block;
+            background-color: rgb(82, 188, 114);
+        }
+        form #addr2 {
+            margin-left: 105px;
+        }
+        form input {
+            display:  inline-block;
+            width: 285px;
+            border: none;
+            border-bottom: 1px dotted black;
+            outline: none;
+        }
+        #email1, #email2 {
+            width: 130px;
+        }
+        form p {
+            font-size: small;
+            margin-left: 105px;
+        }
+        
+    </style>
+    <script>
+        function onLoad(){
+            //객체찾기
+            const pwd = document.querySelector('#pwd'); 
+            const id = document.querySelector('#id'); 
+            const pwd_ck = document.querySelector('#pwd_ck'); 
+        
+            //이벤트리스너등록및 핸들러처리
+            pwd.addEventListener("click",()=>{
+                pwd.nextSibling.textContent = "영문자, 대소문자, 특수문자, 수수자포험 8-32자";
+            }); 
+            id.addEventListener("blur",()=>validate( id));
+            pwd.addEventListener("blur",()=>validate(pwd));
+            pwd_ck.addEventListener("blur",()=>validate(pwd_ck)); 
+
+            function validate(obj){
+                if(obj.value.length  <= 0){
+                    obj.nextSibling.textContent = "필수입력항목"; 
+               } 
+            }
+        }
+    </script>
+
+</head>
+<body onload="onLoad();">
+    <form action="#" method="post">
+        <label for="id">아이디</label>
+        <input type="text" name="id" id="id"><p id="idText"></p>
+        <label for="pwd">패스워드</label>
+        <input type="password" name="pwd" id="pwd"><p id="pwdText"></p>
+        <label for="pwd_ck">패스워드확인</label>
+        <input type="password" name="pwd_ck" id="pwd_ck"><p></p>
+        <label for="email1">이메일</label>
+        <input type="text" name="email1" id="email1"><span>@</span>
+        <input type="text" name="email2" id="email2"> <br><br>
+        <label for="addr1">주소</label>
+        <input type="text" name="addr1" id="addr1"><br><br>
+        <input type="text" name="addr20" id="addr2"><br><br>
+        <button type="button">가 입</button>
+    </form>
+</body>
+</html>
